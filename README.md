@@ -14,5 +14,5 @@ Originally developed for watching Hololive JP streams, then adapted for watching
 - add a gui
 - add timestamps to transcriptions and translations
 - implement speaker diarization at some point 
-  note: vosk has built-in support for diarization but i haven't figured it out yet
+  (note: vosk has built-in support for diarization but i haven't figured it out yet)
 - possibly implement some kind of noise filtering (to filter out game audio, etc. lazy way would be to use nvidia broadcast and a virtual audio cable, but i'd rather bake this in) 
