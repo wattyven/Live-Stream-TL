@@ -13,3 +13,5 @@ Originally developed for watching Hololive JP streams.
 
 - add a gui
 - add timestamps to transcriptions and translations
+- implement speaker diarization at some point using the google cloud api
+- possibly implement some kind of noise filtering (to filter out game audio, etc. lazy way would be to use nvidia broadcast and a virtual audio cable, but i'd rather bake this in) 
