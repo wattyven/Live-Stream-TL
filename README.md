@@ -6,7 +6,7 @@ Make sure `main.py` is located in the same directory as your model. Additionally
 
 By default, the audio to listen to is taken from your default audio input device, so if you're using this like me, you'll *probably* want to set your default audio input to Stereo Mix. (**NOTE: NOT DEFAULT COMMUNICATIONS INPUT. JUST DEFAULT INPUT.**) 
 
-Originally developed for watching Hololive JP streams. 
+Originally developed for watching Hololive JP streams, then adapted for watching CN donghua. 
 
 
 ## TO DO:
