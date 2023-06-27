@@ -10,6 +10,10 @@ from datetime import datetime
 # use the two letter code, e.g. "en" for English, "es" for Spanish, etc.
 lang_sel = "cn"
 # model size selector
+# if you have a weaker machine, i recommend the small model
+# it's faster but only slightly less accurate
+# model = Model("vosk-model-small-{lang}-0.22")
+# these models will have to be downloaded if you don't have them already
 prefer_small_model = False
 
 def callback(indata, frames, time, status):
@@ -58,17 +62,16 @@ if __name__ == "__main__":
     openai.api_key = os.getenv('OPENAI_API_KEY')
 
     # initialize audio stream
+    # audio stream buffer is 65536 bytes, 16000 hz sample rate, 1 channel
+    # by default, sd.InputStream uses the default input device
+    # I have this set to Stereo Mix. You can use a virtual audio cable as well, 
+    # or even a physical cable if you have the right hardware
     stream = sd.InputStream(
         callback=callback, 
         channels=1, 
         samplerate=16000, 
         blocksize=65536)
-
-    # initialize Vosk with model (full size)
-    # if you have a weaker machine, i recommend the small model
-    # it's faster but only slightly less accurate
-    # model = Model("vosk-model-small-{lang}-0.22")
-    # these models will have to be downloaded if you don't have them already
+    
     lang = lang_sel.upper()
     print(f"Language: {lang}")
     if prefer_small_model:
@@ -86,10 +89,7 @@ if __name__ == "__main__":
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d-%H-%M-%S")
     with open(f"transcription_log_{timestamp}_{lang}.txt", "a", encoding='utf-8') as f:
-        # audio stream buffer is 65536 bytes, 16000 hz sample rate, 1 channel
-        # by default, sd.InputStream uses the default input device
-        # I have this set to Stereo Mix. You can use a virtual audio cable as well, 
-        # or even a physical cable if you have the right hardware
+        f.write(f"Transcription log for {lang} started at {timestamp}\n\n")
         with stream:
             while True:
                 pass
