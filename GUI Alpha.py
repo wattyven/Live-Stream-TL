@@ -78,7 +78,8 @@ class TranslationThread(QThread):
         self.stopped.emit(self.text_area, "Translation stopped")
         if self.enable_logging:
             filename = f"transcription_log_{self.timestamp}_{self.lang}.txt"
-            self.stopped.emit(self.text_area, f"Translation saved to log at {filename}")
+            if os.path.isfile(filename) and os.path.getsize(filename) > 0:
+                self.stopped.emit(self.text_area, f"Translation saved to log at {filename}")
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
