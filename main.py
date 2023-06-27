@@ -6,28 +6,6 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 
-SetLogLevel(0)
-# load api key from .env file
-load_dotenv()
-openai.api_key = os.getenv('OPENAI_API_KEY')
-
-# initialize Vosk with Japanese model (full size)
-# if you have a weaker machine, i recommend the small model
-# it's faster but only slightly less accurate
-# model = Model("vosk-model-small-ja-0.22")
-model = Model("vosk-model-ja-0.22")
-
-# recognizer, 16k hz sample rate to match the vosk model
-rec = KaldiRecognizer(model, 16000)
-
-# global variable to signal when translation is complete
-translation_complete = True
-
-# open or make a transcription and translation log file
-# timestamp the file name
-now = datetime.now()
-timestamp = now.strftime("%Y-%m-%d-%H-%M-%S")
-
 def callback(indata, frames, time, status):
     global translation_complete
     if status:
@@ -65,8 +43,34 @@ def callback(indata, frames, time, status):
 
 # open or make a transcription and translation log file
 # timestamp the file name
-with open(f"transcription_log_{timestamp}.txt", "a", encoding='utf-8') as f:
-    # audio stream buffer is 65536 bytes, 16000 hz sample rate, 1 channel
-    with sd.InputStream(callback=callback, channels=1, samplerate=16000, blocksize=65536):
-        while True:
-            pass
+if __name__ == "__main__":
+    
+    SetLogLevel(0)
+
+    # load api key from .env file
+    load_dotenv()
+    openai.api_key = os.getenv('OPENAI_API_KEY')
+
+    # initialize Vosk with Japanese model (full size)
+    # if you have a weaker machine, i recommend the small model
+    # it's faster but only slightly less accurate
+    # model = Model("vosk-model-small-ja-0.22")
+    model = Model("vosk-model-ja-0.22")
+
+    # recognizer, 16k hz sample rate to match the vosk model
+    rec = KaldiRecognizer(model, 16000)
+
+    # global variable to signal when translation is complete
+    translation_complete = True
+
+    # make a timestamped log file, then start transcription and translation
+    now = datetime.now()
+    timestamp = now.strftime("%Y-%m-%d-%H-%M-%S")
+    with open(f"transcription_log_{timestamp}.txt", "a", encoding='utf-8') as f:
+        # audio stream buffer is 65536 bytes, 16000 hz sample rate, 1 channel
+        # by default, sd.InputStream uses the default input device
+        # I have this set to Stereo Mix. You can use a virtual audio cable as well, 
+        # or even a physical cable if you have the right hardware
+        with sd.InputStream(callback=callback, channels=1, samplerate=16000, blocksize=65536):
+            while True:
+                pass
