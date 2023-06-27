@@ -11,7 +11,7 @@ Originally developed for watching Hololive JP streams, then adapted for watching
 
 ## TO DO:
 
-- add a gui
+- ~~add a gui~~
 - add timestamps to transcriptions and translations
 - implement speaker diarization at some point 
   (note: vosk has built-in support for diarization but i haven't figured it out yet)
