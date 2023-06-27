@@ -9,6 +9,8 @@ from datetime import datetime
 # change this to the language you want to translate from
 # use the two letter code, e.g. "en" for English, "es" for Spanish, etc.
 lang_sel = "cn"
+# model size selector
+prefer_small_model = False
 
 def callback(indata, frames, time, status):
     global translation_complete, lang
@@ -69,7 +71,10 @@ if __name__ == "__main__":
     # these models will have to be downloaded if you don't have them already
     lang = lang_sel.upper()
     print(f"Language: {lang}")
-    model = Model(f"vosk-model-{lang}-0.22")
+    if prefer_small_model:
+        model = Model(f"vosk-model-small-{lang}-0.22")
+    else:
+        model = Model(f"vosk-model-{lang}-0.22")
 
     # recognizer, 16k hz sample rate to match the vosk model
     rec = KaldiRecognizer(model, 16000)
@@ -80,7 +85,7 @@ if __name__ == "__main__":
     # make a timestamped log file, then start transcription and translation
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d-%H-%M-%S")
-    with open(f"transcription_log_{timestamp}.txt", "a", encoding='utf-8') as f:
+    with open(f"transcription_log_{timestamp}_{lang}.txt", "a", encoding='utf-8') as f:
         # audio stream buffer is 65536 bytes, 16000 hz sample rate, 1 channel
         # by default, sd.InputStream uses the default input device
         # I have this set to Stereo Mix. You can use a virtual audio cable as well, 
