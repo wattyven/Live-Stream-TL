@@ -49,6 +49,9 @@ When you run the application, you will see a window with several controls:
 - **Stop Translation button**: Click this button to stop the translation. If logging is enabled, the application will save the translations in a log file and display the filename in the output tab.
 
 **I highly recommend using Stereo Mix set as your <u>default input</u> (*NOT* default <u>communications</u> input) when running this program. For noise cancellation (removal of game audio, etc), you can also route a virtual audio cable into Nvidia Broadcast / RTX voice or something of the sort.** 
+ex: 
+
+<img src="https://storage.googleapis.com/openscreenshot/2%2Fh%2F-/cXSuLW-h2.png" alt="NVIDIA Broadcast Demo"/>
 
 ## To Do
 
