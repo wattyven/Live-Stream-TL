@@ -41,12 +41,14 @@ Depending on your system, there's a chance you might need to specify `py3` or `p
 
 When you run the application, you will see a window with several controls:
 
-- **Language code input field**: Enter the two-letter code of the language you want to translate from, e.g., "en" for English, "es" for Spanish, etc.
+- **Language code input field**: Enter the two-letter code of the language you want to translate from, e.g., "en" for English, "es" for Spanish, etc. Change the translation prompt if you're translating from English to another language!
 **You'll need the corresponding Vosk model as well!** To look up letter codes and model details, please visit the Vosk model page at https://alphacephei.com/vosk/models
 - **Model selector**: Choose whether to prefer the small or large model for the Vosk API. The small model is faster but slightly less accurate.
 - **Logging checkbox**: Check this box to enable logging of translations. The translations will be saved in a file named `transcription_log_{timestamp}_{language}.txt` in the project directory.
 - **Start Translation button**: Click this button to start the translation. The application will start listening for audio input and display the translations in the output tab.
 - **Stop Translation button**: Click this button to stop the translation. If logging is enabled, the application will save the translations in a log file and display the filename in the output tab.
+
+Translations are currently done by the gpt-3.5-turbo model. If you have API access to gpt-4, gpt-4's translations are of far higher quality. However, tokens do cost more. 
 
 **I highly recommend using Stereo Mix set as your <u>default input</u> (*NOT* default <u>communications</u> input) when running this program. For noise cancellation (removal of game audio, etc), you can also route a virtual audio cable into Nvidia Broadcast / RTX voice or something of the sort.** 
 ex: 
