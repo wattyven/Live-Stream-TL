@@ -1,4 +1,4 @@
-# Watty's Translations - Alpha
+# Live Stream Translations - Alpha
 
 This is a real-time translation application that uses the Vosk and OpenAI APIs. It also provides an optional (though highly recommended) graphical user interface for starting and stopping translations, and supports logging of translations.
 
