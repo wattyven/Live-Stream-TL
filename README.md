@@ -2,6 +2,10 @@
 
 This is a real-time translation application that uses the Vosk library and OpenAI API. It also provides an optional (though highly recommended) graphical user interface for starting and stopping translations, and supports logging of translations.
 
+## Screenshot
+
+<img src="https://raw.githubusercontent.com/wattyven/Live-Stream-TL/main/Screenshot.png"/>
+
 ## Prerequisites
 
 - Python 3.8 or higher
