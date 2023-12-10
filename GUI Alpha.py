@@ -40,14 +40,14 @@ class TranslationThread(QThread):
                 if result['text'].strip():
                     self.signal.emit(self.text_area, f"{self.lang}: {result['text']}")
                     try:
-                        response = openai.ChatCompletion.create(
+                        response = openai.chat.completions.create(
                             model="gpt-3.5-turbo-1106",
                             messages=[
                                 {"role": "system", "content": "You are a professional English translator, adept at translating any language into English while retaining cultural references, puns, and the like. Keep the meaning of your translations in line with the original intent. I want you to only reply with the translated English text: no other information is needed."},
                                 {"role": "user", "content": f"Translate the following from {self.lang} to English: {result['text']}"},
                             ],
                         )
-                        translated_text = response['choices'][0]['message']['content']
+                        translated_text = response.choices[0].message.content
                     except:
                         translated_text = "Translation failed. Apologies for the inconvenience."
                     self.signal.emit(self.text_area, "EN: " + translated_text)
