@@ -30,8 +30,10 @@ class TranslationThread(QThread):
         if status:
             self.signal.emit(str(status))
         else:
-            if self.translation_complete:
-                self.signal.emit(self.text_area, "\nListening...")
+            # uncomment the below if you want to see the "listening..." message
+            # while the program is listening to audio input, really only useful for debugging, kinda annoying otherwise
+            # if self.translation_complete:
+                # self.signal.emit(self.text_area, "\nListening...")
             int_data = (indata[:, 0] * 32767).astype('int16')
             if self.rec.AcceptWaveform(int_data.tobytes()):
                 self.translation_complete = False
@@ -44,7 +46,7 @@ class TranslationThread(QThread):
                             model="gpt-3.5-turbo-1106",
                             messages=[
                                 {"role": "system", "content": "You are a professional English translator, adept at translating any language into English while retaining cultural references, puns, and the like. Keep the meaning of your translations in line with the original intent. I want you to only reply with the translated English text: no other information is needed."},
-                                {"role": "user", "content": f"Translate the following from {self.lang} to English: {result['text']}"},
+                                {"role": "user", "content": f"Translate the following into English: {result['text']}"},
                             ],
                         )
                         translated_text = response.choices[0].message.content
@@ -84,7 +86,7 @@ class TranslationThread(QThread):
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.setWindowTitle("Watty's Translations - Alpha - 27 June 2023")
+        self.setWindowTitle("Watty's Translations - Alpha - 10 Dec 2023")
 
         self.start_button = QPushButton("Start Translation")
         self.start_button.clicked.connect(self.start_translation)
@@ -98,8 +100,8 @@ class MainWindow(QMainWindow):
         self.lang_input.setPlaceholderText("Enter language code")
 
         self.model_selector = QComboBox()
-        self.model_selector.addItem("Prefer Small Model", True)
         self.model_selector.addItem("Prefer Large Model", False)
+        self.model_selector.addItem("Prefer Small Model", True)
 
         self.log_checkbox = QCheckBox("Enable Logging")
 
