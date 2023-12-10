@@ -1,6 +1,6 @@
 # Live Stream Translations - Alpha
 
-This is a real-time translation application that uses the Vosk library and OpenAI API. It also provides an optional (though highly recommended) graphical user interface for starting and stopping translations, and supports logging of translations.
+This is a real-time translation application that uses the Vosk library and OpenAI API. It provides a user interface for starting and stopping translations, and supports logging of translations.
 
 ## Screenshot
 
@@ -31,13 +31,7 @@ Before running the application, you need to set your OpenAI API key. You can do 
 
 To run the application, navigate to the project directory in your terminal and run the following command:
     
-    py "GUI Alpha.py"
-    
-You can also run the CLI version, if you're so inclined, with the following:
-
-
-    py "CLI main.py"
-
+    py "translate.py"
 
 Depending on your system, there's a chance you might need to specify `py3` or `python` or `python3` instead of `py`. I don't know what you're using or how it's configured, but this was created on a Windows machine. 
 
