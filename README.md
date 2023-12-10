@@ -1,6 +1,6 @@
 # Live Stream Translations
 
-This is a real-time translation application that uses the Vosk library and OpenAI API. It provides a user interface for starting and stopping translations, and supports logging of translations.
+This is a real-time translation application that uses Vosk and the OpenAI API. It provides a user interface for starting and stopping translations, and supports logging of translations.
 
 ## Screenshot
 
