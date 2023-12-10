@@ -48,7 +48,7 @@ When you run the application, you will see a window with several controls:
 - **Start Translation button**: Click this button to start the translation. The application will start listening for audio input and display the translations in the output tab.
 - **Stop Translation button**: Click this button to stop the translation. If logging is enabled, the application will save the translations in a log file and display the filename in the output tab.
 
-Translations are currently done by the gpt-3.5-turbo model. If you don't mind paying more, gpt-4's translations are of far higher quality, and you can use it by passing `gpt-4-1106-preview` as the model instead of `gpt-3.5-turbo` in your OpenAI API calls. However, tokens cost 15x as much, so I personally wouldn't consider it to be worth it, as the gpt-3.5-turbo translations are already well beyond what Google Translate has to offer at the moment. 
+Translations are currently done by the gpt-3.5-turbo model. If you don't mind paying more, gpt-4's translations are of far higher quality, and you can use it by passing `gpt-4-1106-preview` as the model instead of `gpt-3.5-turbo-1106` in your OpenAI API calls. However, tokens cost 15x as much, so I personally wouldn't consider it to be worth it, as the gpt-3.5-turbo translations are already well beyond what Google Translate has to offer at the moment. 
 
 **I highly recommend using Stereo Mix set as your <u>default input</u> (*NOT* default <u>communications</u> input) when running this program. For noise cancellation (removal of game audio, etc), you can also route a virtual audio cable into Nvidia Broadcast / RTX voice or something of the sort.** 
 ex: 
