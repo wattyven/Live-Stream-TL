@@ -60,3 +60,5 @@ I do intend on adding background noise removal directly into the project, though
 I also intend on implementing some kind of speaker diarization to distinguish between multiple speakers (such as when there are collab streams, or multiple people are talking in a show), but though it's possible to do so with Vosk, I haven't quite figured it out yet as this is ultimately still just a hobby project. It'll come eventually, though. 
 
 The last feature I'd like to implement for now is some kind of timestamping to sync up with streams and videos. While this can be relatively easily done with livestreams, I still have to figure out how to account for videos and shows etc, as well as ensure that the text actually matches up to the audio perfectly, so it's still some ways away as well. 
+
+April 2025: in the coming weeks I expect to add an option to move functionality entire offline; this will likely be done using llama.cpp and one of the more performant distilled Deepseek models. However, thus will also significantly increase hardware requirements (compute, VRAM/RAM, and disk space), thus why I intend to make this feature optional.
