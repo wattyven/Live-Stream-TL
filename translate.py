@@ -72,8 +72,8 @@ class TranslationThread(QThread):
             model = Model(f"vosk-model-{self.lang}-0.22")
         self.rec = KaldiRecognizer(model, 16000)
         with stream:
-            while True:
-                pass
+            while not self.stop_flag:
+                QThread.msleep(50)
 
     def stop(self):
         self.stop_flag = True
@@ -93,6 +93,10 @@ class MainWindow(QMainWindow):
 
         self.stop_button = QPushButton("Stop Translation")
         self.stop_button.clicked.connect(self.stop_translation)
+
+        self.start_button.setEnabled(True)
+        self.stop_button.setEnabled(False)
+        self.thread = None
 
         self.tab_widget = QTabWidget()
 
@@ -119,6 +123,10 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(main_widget)
 
     def start_translation(self):
+        if self.thread is not None and self.thread.isRunning():
+            self.update_text(self.text_area, "Translation already running; please terminate it before starting a new one.")
+            return
+        
         lang_sel = self.lang_input.text()
         prefer_small_model = self.model_selector.currentData()
         enable_logging = self.log_checkbox.isChecked()
@@ -133,8 +141,15 @@ class MainWindow(QMainWindow):
         self.thread.stopped.connect(self.update_text)
         self.thread.start()
 
+        self.start_button.setEnabled(False)
+        self.stop_button.setEnabled(True)
+
     def stop_translation(self):
-        self.thread.stop()
+        if self.thread is not None:
+            self.thread.stop()
+            self.thread = None
+            self.start_button.setEnabled(True)
+            self.stop_button.setEnabled(False)
 
     def update_text(self, text_area, message):
         text_area.moveCursor(QTextCursor.MoveOperation.End)
