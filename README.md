@@ -62,3 +62,5 @@ I also intend on implementing some kind of speaker diarization to distinguish be
 The last feature I'd like to implement for now is some kind of timestamping to sync up with streams and videos. While this can be relatively easily done with livestreams, I still have to figure out how to account for videos and shows etc, as well as ensure that the text actually matches up to the audio perfectly, so it's still some ways away as well. 
 
 April 2025: in the coming weeks I expect to add an option to move functionality entire offline; this will likely be done using llama.cpp and one of the more performant distilled Deepseek models. However, thus will also significantly increase hardware requirements (compute, VRAM/RAM, and disk space), thus why I intend to make this feature optional.
+
+As of 18 May 2025, I have Qwen2.5-0.5B successfully running offline, at a cost of about 1.5GB of additional RAM used, but the outputs are not of sufficient quality, and as such this software has not yet been updated to reflect that change. 
