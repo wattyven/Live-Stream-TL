@@ -7,7 +7,7 @@ This is a real-time translation application that uses Vosk and the OpenAI API. I
 <!-- This screenshot shows the 0.1 interface; the layout changed in 0.2. -->
 <img src="https://raw.githubusercontent.com/wattyven/Live-Stream-TL/main/Screenshot.png"/>
 
-## What's new in 0.2 (October 2026)
+## What's new in v0.2 (October 2026)
  
 - Speech recognition and translation now run on separate threads, so audio is no longer dropped while a translation is in progress, and words appear live as they're recognised.
 - Installed Vosk models are detected automatically, and any model version or variant works. The "v0.22 models only" limitation is gone.
@@ -79,6 +79,7 @@ While a session is running, the line under the transcript shows what's being hea
 ex:
  
 <img src="https://storage.googleapis.com/openscreenshot/2%2Fh%2F-/cXSuLW-h2.png" alt="NVIDIA Broadcast Demo"/>
+
 ## Troubleshooting
  
 - **"No models found"**: the model has to be unzipped (a folder, not a `.zip`), and its folder name must start with `vosk-model-`. Press **Refresh** after adding it.
